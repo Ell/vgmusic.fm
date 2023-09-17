@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.vertical-slider {
+    appearance: slider-vertical;
+    -moz-appearance: slider-vertical;
+    -webkit-appearance: slider-vertical;
+}
+
+@supports (-moz-appearance:none) {
+    .track-volume {
+        right: 50px;
+        opacity: 0.9;
+    }
+}

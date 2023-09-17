@@ -1,0 +1,6 @@
+name = "vgmusicfm"
+compatibility_date = "2023-05-15"
+
+kv_namespaces = [
+    { binding = "VGMUSIC", id = "8914750976d348ff9b75dfc69cee1ae0", preview_id = "9ed5e5614f284218b3680cc4da1392e8" }
+]
