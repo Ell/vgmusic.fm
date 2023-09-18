@@ -17,12 +17,6 @@ export const useAudioPlayer = () => {
   const [currentTime, setCurrentTime] = React.useState<number>(0);
   const [ended, setEnded] = React.useState<boolean>(false);
 
-  const handleVolumeChange = React.useCallback(() => {
-    const audio = audioRef.current;
-
-    if (!audio) return;
-  }, [audioRef]);
-
   const handlePause = React.useCallback(() => {
     setPaused(true);
   }, []);
@@ -71,7 +65,6 @@ export const useAudioPlayer = () => {
     audio.addEventListener("canplay", handleCanPlay);
     audio.addEventListener("ended", handleEnded);
     audio.addEventListener("loadstart", handleLoadStart);
-    audio.addEventListener("volumechange", handleVolumeChange);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("play", handlePlay);
 
@@ -86,7 +79,6 @@ export const useAudioPlayer = () => {
       audio.removeEventListener("canplay", handleCanPlay);
       audio.removeEventListener("ended", handleEnded);
       audio.removeEventListener("loadstart", handleLoadStart);
-      audio.removeEventListener("volumechange", handleVolumeChange);
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("play", handlePlay);
 
@@ -111,6 +103,7 @@ export const useAudioPlayer = () => {
     if (!audioRef.current) return;
 
     audioRef.current.src = url;
+    setEnded(false);
   }, []);
 
   const togglePlayPause = React.useCallback(() => {
